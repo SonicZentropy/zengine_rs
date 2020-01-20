@@ -22,6 +22,7 @@ use winit::{
 fn main() {
 
     init();
+    info!("Initialized");
 
     let event_loop = EventLoop::new();
     let window = WindowBuilder::new()
@@ -50,6 +51,15 @@ fn main() {
                                 virtual_keycode: Some(VirtualKeyCode::Escape),
                                 ..
                             } => *control_flow = ControlFlow::Exit,
+                            KeyboardInput {
+                                state: ElementState::Pressed,
+                                virtual_keycode: Some(VirtualKeyCode::Space),
+                                ..
+                            } => {
+                                info!("Toggling");
+                                state.use_triangle_pipeline = !state.use_triangle_pipeline;
+                                *control_flow = ControlFlow::Wait;
+                            },
                             _ => *control_flow = ControlFlow::Wait,
                         }
                     }
@@ -98,7 +108,9 @@ struct State {
     swap_chain: wgpu::SwapChain,
     clear_color: wgpu::Color,
     render_pipeline: wgpu::RenderPipeline,
+    triangle_pipeline: wgpu::RenderPipeline,
     size: winit::dpi::PhysicalSize<u32>,
+    use_triangle_pipeline: bool,
 }
 
 impl State {
@@ -129,6 +141,7 @@ impl State {
 
         let clear_color = wgpu::Color {r: 0.1, g: 0.3, b: 0.5, a: 1.0};
 
+        //NORMAL PIPELINE
         let vs_src = include_str!("shaders/shader.vert");
         let fs_src = include_str!("shaders/shader.frag");
 
@@ -179,6 +192,57 @@ impl State {
             alpha_to_coverage_enabled: false,
         });
 
+        //TRIANGLE POSITION TO COLOR PIPELINE
+        let vs_src = include_str!("shaders/triangle.vert");
+        let fs_src = include_str!("shaders/shader.frag");
+
+        let vs_spirv = glsl_to_spirv::compile(vs_src, glsl_to_spirv::ShaderType::Vertex).unwrap();
+        let fs_spirv = glsl_to_spirv::compile(fs_src, glsl_to_spirv::ShaderType::Fragment).unwrap();
+
+        let vs_data = wgpu::read_spirv(vs_spirv).unwrap();
+        let fs_data = wgpu::read_spirv(fs_spirv).unwrap();
+
+        let vs_module = device.create_shader_module(&vs_data);
+        let fs_module = device.create_shader_module(&fs_data);
+
+        let render_pipeline_layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
+            bind_group_layouts: &[],
+        });
+
+        let triangle_pipeline = device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
+            layout: &render_pipeline_layout,
+            vertex_stage: wgpu::ProgrammableStageDescriptor {
+                module: &vs_module,
+                entry_point: "main",
+            },
+            fragment_stage: Some(wgpu::ProgrammableStageDescriptor {
+                module: &fs_module,
+                entry_point: "main",
+            }),
+            rasterization_state: Some(wgpu::RasterizationStateDescriptor {
+                front_face: wgpu::FrontFace::Ccw,
+                cull_mode: wgpu::CullMode::Back,
+                depth_bias: 0,
+                depth_bias_slope_scale: 0.0,
+                depth_bias_clamp: 0.0,
+            }),
+            color_states: &[
+                wgpu::ColorStateDescriptor {
+                    format: sc_desc.format,
+                    color_blend: wgpu::BlendDescriptor::REPLACE,
+                    alpha_blend: wgpu::BlendDescriptor::REPLACE,
+                    write_mask: wgpu::ColorWrite::ALL,
+                }
+            ],
+            primitive_topology: wgpu::PrimitiveTopology::TriangleList,
+            depth_stencil_state: None,
+            index_format: wgpu::IndexFormat::Uint16,
+            vertex_buffers: &[],
+            sample_count: 1,
+            sample_mask: !0,
+            alpha_to_coverage_enabled: false,
+        });
+
         Self {
             surface,
             adapter,
@@ -188,7 +252,9 @@ impl State {
             swap_chain,
             clear_color,
             render_pipeline,
+            triangle_pipeline,
             size,
+            use_triangle_pipeline: false,
         }
     }
 
@@ -231,7 +297,12 @@ impl State {
                 depth_stencil_attachment: None,
             });
 
-            render_pass.set_pipeline(&self.render_pipeline);
+            if self.use_triangle_pipeline {
+                render_pass.set_pipeline(&self.triangle_pipeline);
+            } else {
+                render_pass.set_pipeline(&self.render_pipeline);
+            }
+
             render_pass.draw(0..3, 0..1);
         }
 

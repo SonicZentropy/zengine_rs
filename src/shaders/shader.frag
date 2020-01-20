@@ -5,6 +5,9 @@
 //In most cases, location=0 is the current texture from the swapchain aka. the screen.
 layout(location=0) out vec4 f_color;
 
+// shader.frag
+layout(location=1) in vec4 v_color;
+
 void main() {
-    f_color = vec4(0.3, 0.2, 0.1, 1.0);
+    f_color = v_color;
 }
