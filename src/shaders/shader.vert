@@ -1,15 +1,13 @@
 // shader.vert
 #version 450
 
-layout(location=1) out vec4 v_color;
+layout(location=0) in vec3 a_position;
+layout(location=1) in vec3 a_color;
 
-const vec2 positions[3] = vec2[3](
-vec2(0.0, -0.5),
-vec2(-0.5, 0.5),
-vec2(0.5, 0.5)
-);
+layout(location=1) out vec3 v_color;
+
 
 void main() {
-    v_color = vec4(0.3, 0.2, 0.1, 1.0);
-    gl_Position = vec4(positions[gl_VertexIndex], 0.0, 1.0);
+    v_color = a_color;
+    gl_Position = vec4(a_position, 1.0);
 }

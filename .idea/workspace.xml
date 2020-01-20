@@ -13,13 +13,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b3b071e-7b85-4333-9713-2e700c8608ca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/shaders/triangle.vert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/shader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/shader.frag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/shader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/shader.vert" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shaders/triangle.vert" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +64,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="CPPToolchains" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RunManager" selected="Cargo Command.Check">
     <configuration name="Build Release" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
@@ -226,39 +225,44 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="1010" y="434" key="FileChooserDialogImpl/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512732476" />
-    <state width="1104" height="474" key="GridCell.Tab.0.bottom" timestamp="1579512809512">
+    <state width="1104" height="474" key="GridCell.Tab.0.bottom" timestamp="1579515673631">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919686" />
-    <state width="1104" height="474" key="GridCell.Tab.0.bottom/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512809512" />
-    <state width="1104" height="474" key="GridCell.Tab.0.center" timestamp="1579512809512">
+    <state width="1104" height="474" key="GridCell.Tab.0.bottom/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579515673631" />
+    <state width="1104" height="474" key="GridCell.Tab.0.center" timestamp="1579515673631">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1104" height="474" key="GridCell.Tab.0.center/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512809512" />
-    <state width="1104" height="474" key="GridCell.Tab.0.left" timestamp="1579512809511">
+    <state width="1104" height="474" key="GridCell.Tab.0.center/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579515673631" />
+    <state width="1104" height="474" key="GridCell.Tab.0.left" timestamp="1579515673631">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1104" height="474" key="GridCell.Tab.0.left/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512809511" />
-    <state width="1104" height="474" key="GridCell.Tab.0.right" timestamp="1579512809512">
+    <state width="1104" height="474" key="GridCell.Tab.0.left/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579515673631" />
+    <state width="1104" height="474" key="GridCell.Tab.0.right" timestamp="1579515673631">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1104" height="474" key="GridCell.Tab.0.right/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512809512" />
-    <state x="468" y="334" width="1524" height="717" key="SettingsEditor" timestamp="1579512746421">
+    <state width="1104" height="474" key="GridCell.Tab.0.right/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579515673631" />
+    <state x="468" y="334" width="1524" height="717" key="SettingsEditor" timestamp="1579514485020">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="404" y="265" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1576268865993" />
-    <state x="468" y="334" width="1524" height="717" key="SettingsEditor/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512746421" />
+    <state x="468" y="334" width="1524" height="717" key="SettingsEditor/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579514485020" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/main.rs</url>
-          <line>24</line>
+          <line>23</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.rs</url>
+          <line>116</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
