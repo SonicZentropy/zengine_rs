@@ -1,0 +1,18 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <MarkdownNavigatorCodeStyleSettings>
+      <option name="RIGHT_MARGIN" value="72" />
+    </MarkdownNavigatorCodeStyleSettings>
+    <RsCodeStyleSettings>
+      <option name="ALIGN_WHERE_CLAUSE" value="true" />
+      <option name="ALIGN_TYPE_PARAMS" value="true" />
+    </RsCodeStyleSettings>
+    <codeStyleSettings language="Rust">
+      <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
+      <indentOptions>
+        <option name="USE_TAB_CHARACTER" value="true" />
+        <option name="SMART_TABS" value="true" />
+      </indentOptions>
+    </codeStyleSettings>
+  </code_scheme>
+</component>
