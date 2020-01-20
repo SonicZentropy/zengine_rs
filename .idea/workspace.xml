@@ -13,10 +13,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b3b071e-7b85-4333-9713-2e700c8608ca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/shaders/shader.frag" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shaders/shader.vert" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/LDAPScanner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LDAPScanner.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +66,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager" selected="Cargo Command.Check">
     <configuration name="Build Release" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
@@ -212,6 +215,10 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="676" y="366" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1576192006912" />
+    <state x="861" y="528" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579507968919">
+      <screen x="0" y="0" width="3440" height="1440" />
+    </state>
+    <state x="861" y="528" key="#com.intellij.fileTypes.FileTypeChooser/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507968919" />
     <state x="964" y="454" key="EnvironmentVariablesDialog" timestamp="1579507523315">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
@@ -220,30 +227,30 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="1010" y="434" key="FileChooserDialogImpl/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507338227" />
-    <state width="1876" height="284" key="GridCell.Tab.0.bottom" timestamp="1579507386609">
+    <state width="1105" height="284" key="GridCell.Tab.0.bottom" timestamp="1579510716871">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919686" />
-    <state width="1876" height="284" key="GridCell.Tab.0.bottom/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507386609" />
-    <state width="1876" height="284" key="GridCell.Tab.0.center" timestamp="1579507386609">
+    <state width="1105" height="284" key="GridCell.Tab.0.bottom/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579510716871" />
+    <state width="1105" height="284" key="GridCell.Tab.0.center" timestamp="1579510716871">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1876" height="284" key="GridCell.Tab.0.center/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507386609" />
-    <state width="1876" height="284" key="GridCell.Tab.0.left" timestamp="1579507386609">
+    <state width="1105" height="284" key="GridCell.Tab.0.center/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579510716871" />
+    <state width="1105" height="284" key="GridCell.Tab.0.left" timestamp="1579510716871">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1876" height="284" key="GridCell.Tab.0.left/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507386609" />
-    <state width="1876" height="284" key="GridCell.Tab.0.right" timestamp="1579507386609">
+    <state width="1105" height="284" key="GridCell.Tab.0.left/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579510716871" />
+    <state width="1105" height="284" key="GridCell.Tab.0.right" timestamp="1579510716871">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1876" height="284" key="GridCell.Tab.0.right/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507386609" />
-    <state x="468" y="334" width="1524" height="717" key="SettingsEditor" timestamp="1579507538286">
+    <state width="1105" height="284" key="GridCell.Tab.0.right/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579510716871" />
+    <state x="468" y="334" width="1524" height="717" key="SettingsEditor" timestamp="1579508155995">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="404" y="265" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1576268865993" />
-    <state x="468" y="334" width="1524" height="717" key="SettingsEditor/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507538286" />
+    <state x="468" y="334" width="1524" height="717" key="SettingsEditor/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579508155995" />
   </component>
 </project>

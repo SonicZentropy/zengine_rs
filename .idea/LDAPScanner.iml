@@ -36,6 +36,12 @@
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/crossbeam-epoch-1d555f9d46afc112/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/memoffset-68c03ac11c22ec06/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/rayon-core-4d89f411abcf34f2/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/backtrace-sys-6c000e7c043397bf/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/spirv_cross-879df248ecccb504/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/libloading-71e7ee462c5e4495/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/glsl-to-spirv-46cdc53722802be3/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/typenum-b589dd9609deb073/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/getrandom-0c61e92b461b27f8/out" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
