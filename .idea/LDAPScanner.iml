@@ -70,6 +70,11 @@
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/glsl-to-spirv-929eb88871feb542/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/typenum-c220186a22c1fffb/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/debug/build/getrandom-f1115362f8bd3d69/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/cgmath-1d77ec87cd57d6c5/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/rand-32f7225a2229d83c/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/winapi-395886628a67de15/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/rand_pcg-b9c6982b2b6a6c5d/out" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/debug/build/rand_chacha-27995a176f0c5990/out" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

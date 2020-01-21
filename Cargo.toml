@@ -13,6 +13,7 @@ dotenv = "0.14.1"
 image = "0.22"
 winit = "0.20.0"
 glsl-to-spirv = "0.1.7"
+cgmath = "0.17.0"
 
 [dependencies.wgpu]
 version = "0.4"
