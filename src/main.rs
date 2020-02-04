@@ -117,6 +117,10 @@ struct State {
     use_triangle_pipeline: bool,
     num_indices: u32,
     camera: Camera,
+    camera_controller: CameraController,
+    uniforms: Uniforms,
+    uniform_buffer: wgpu::Buffer,
+    uniform_bind_group: wgpu::BindGroup,
 }
 
 impl State {
@@ -245,6 +249,59 @@ impl State {
             ],
         });
 
+        let camera = Camera {
+            // position the camera one unit up and 2 units back
+            eye: (0.0, 1.0, -2.0).into(),
+            // have it look at the origin
+            target: (0.0, 0.0, 0.0).into(),
+            // which way is "up"
+            up: cgmath::Vector3::unit_y(),
+            aspect: sc_desc.width as f32 / sc_desc.height as f32,
+            fovy: 45.0,
+            znear: 0.1,
+            zfar: 100.0,
+        };
+
+        let camera_controller = CameraController::new(0.2);
+
+        let mut uniforms = Uniforms::new();
+        uniforms.update_view_proj(&camera);
+
+        let uniform_buffer = device
+            // The COPY_DST part will be important later
+            .create_buffer_mapped(1, wgpu::BufferUsage::UNIFORM | wgpu::BufferUsage::COPY_DST)
+            .fill_from_slice(&[uniforms]);
+
+        let uniform_bind_group_layout = device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
+            bindings: &[
+                wgpu::BindGroupLayoutBinding {
+                    binding: 0,
+                    visibility: wgpu::ShaderStage::VERTEX, // 1.
+                    ty: wgpu::BindingType::UniformBuffer {
+                        dynamic: false, // 2.
+                    },
+                }
+            ]
+        });
+
+        let uniform_bind_group = device.create_bind_group(&wgpu::BindGroupDescriptor {
+            layout: &uniform_bind_group_layout,
+            bindings: &[
+                wgpu::Binding {
+                    binding: 0,
+                    resource: wgpu::BindingResource::Buffer {
+                        buffer: &uniform_buffer,
+                        // FYI: you can share a single buffer between bindings.
+                        range: 0..std::mem::size_of_val(&uniforms) as wgpu::BufferAddress,
+                    }
+                }
+            ],
+        });
+
+        let render_pipeline_layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
+            bind_group_layouts: &[&texture_bind_group_layout, &uniform_bind_group_layout],
+        });
+
         //NORMAL PIPELINE
         let vs_src = include_str!("shaders/shader.vert");
         let fs_src = include_str!("shaders/shader.frag");
@@ -258,9 +315,7 @@ impl State {
         let vs_module = device.create_shader_module(&vs_data);
         let fs_module = device.create_shader_module(&fs_data);
 
-        let render_pipeline_layout = device.create_pipeline_layout(&wgpu::PipelineLayoutDescriptor {
-            bind_group_layouts: &[&texture_bind_group_layout, &uniform_bind_group_layout],
-        });
+
 
         let render_pipeline = device.create_render_pipeline(&wgpu::RenderPipelineDescriptor {
             layout: &render_pipeline_layout,
@@ -308,52 +363,7 @@ impl State {
             .fill_from_slice(INDICES);
         let num_indices = INDICES.len() as u32;
 
-        let camera = Camera {
-            // position the camera one unit up and 2 units back
-            eye: (0.0, 1.0, -2.0).into(),
-            // have it look at the origin
-            target: (0.0, 0.0, 0.0).into(),
-            // which way is "up"
-            up: cgmath::Vector3::unit_y(),
-            aspect: sc_desc.width as f32 / sc_desc.height as f32,
-            fovy: 45.0,
-            znear: 0.1,
-            zfar: 100.0,
-        };
 
-        let mut uniforms = Uniforms::new();
-        uniforms.update_view_proj(&camera);
-
-        let uniform_buffer = device
-            // The COPY_DST part will be important later
-            .create_buffer_mapped(1, wgpu::BufferUsage::UNIFORM | wgpu::BufferUsage::COPY_DST)
-            .fill_from_slice(&[uniforms]);
-
-        let uniform_bind_group_layout = device.create_bind_group_layout(&wgpu::BindGroupLayoutDescriptor {
-            bindings: &[
-                wgpu::BindGroupLayoutBinding {
-                    binding: 0,
-                    visibility: wgpu::ShaderStage::VERTEX, // 1.
-                    ty: wgpu::BindingType::UniformBuffer {
-                        dynamic: false, // 2.
-                    },
-                }
-            ]
-        });
-
-        let uniform_bind_group = device.create_bind_group(&wgpu::BindGroupDescriptor {
-            layout: &uniform_bind_group_layout,
-            bindings: &[
-                wgpu::Binding {
-                    binding: 0,
-                    resource: wgpu::BindingResource::Buffer {
-                        buffer: &uniform_buffer,
-                        // FYI: you can share a single buffer between bindings.
-                        range: 0..std::mem::size_of_val(&uniforms) as wgpu::BufferAddress,
-                    }
-                }
-            ],
-        });
 
         Self {
             surface,
@@ -374,6 +384,10 @@ impl State {
             use_triangle_pipeline: false,
             num_indices,
             camera,
+            camera_controller,
+            uniform_buffer,
+            uniform_bind_group,
+            uniforms,
         }
     }
 
@@ -384,12 +398,29 @@ impl State {
         self.swap_chain = self.device.create_swap_chain(&self.surface, &self.sc_desc);
     }
 
-    fn input(&mut self, _event: &WindowEvent) -> bool {
-        false
+    fn input(&mut self, event: &WindowEvent) -> bool {
+        self.camera_controller.process_events(event)
     }
 
     fn update(&mut self) {
+        self.camera_controller.update_camera(&mut self.camera);
+        self.uniforms.update_view_proj(&self.camera);
 
+        // Copy operation's are performed on the gpu, so we'll need
+        // a CommandEncoder for that
+        let mut encoder = self.device.create_command_encoder(&wgpu::CommandEncoderDescriptor {
+            todo: 0,
+        });
+
+        let staging_buffer = self.device
+                                 .create_buffer_mapped(1, wgpu::BufferUsage::COPY_SRC)
+                                 .fill_from_slice(&[self.uniforms]);
+
+        encoder.copy_buffer_to_buffer(&staging_buffer, 0, &self.uniform_buffer, 0, std::mem::size_of::<Uniforms>() as wgpu::BufferAddress);
+
+        // We need to remember to submit our CommandEncoder's output
+        // otherwise we won't see any change.
+        self.queue.submit(&[encoder.finish()]);
     }
 
     fn render(&mut self) {
@@ -421,7 +452,10 @@ impl State {
             render_pass.set_vertex_buffers(0, &[(&self.vertex_buffer, 0)]);
             render_pass.set_index_buffer(&self.index_buffer, 0);
             render_pass.set_bind_group(0, &self.diffuse_bind_group, &[]);
-            render_pass.draw_indexed(0..self.num_indices, 0, 0..1);
+            render_pass.set_bind_group(1, &self.uniform_bind_group, &[]);
+        render_pass.set_vertex_buffers(0, &[(&self.vertex_buffer, 0)]);
+        render_pass.set_index_buffer(&self.index_buffer,0);
+        render_pass.draw_indexed(0..self.num_indices, 0, 0..1);
 
         drop(render_pass);
 
@@ -448,7 +482,7 @@ impl Camera {
         // 2.
         let proj = cgmath::perspective(cgmath::Deg(self.fovy), self.aspect, self.znear, self.zfar);
 
-        // 3.
+        // 3. This is the ONLY place you have to convert vulkan to opengl coordinate system
         return OPENGL_TO_WGPU_MATRIX * proj * view;
     }
 }
@@ -503,11 +537,11 @@ impl Vertex {
 }
 
 const VERTICES: &[Vertex] = &[
-    Vertex { position: [-0.0868241, -0.49240386, 0.0], tex_coords: [0.4131759, 0.00759614], }, // A
-    Vertex { position: [-0.49513406, -0.06958647, 0.0], tex_coords: [0.0048659444, 0.43041354], }, // B
-    Vertex { position: [-0.21918549, 0.44939706, 0.0], tex_coords: [0.28081453, 0.949397057], }, // C
-    Vertex { position: [0.35966998, 0.3473291, 0.0], tex_coords: [0.85967, 0.84732911], }, // D
-    Vertex { position: [0.44147372, -0.2347359, 0.0], tex_coords: [0.9414737, 0.2652641], }, // E
+    Vertex { position: [-0.0868241, -0.49240386, 0.0], tex_coords: [1.0 - 0.4131759, 1.0 - 0.00759614], }, // A
+    Vertex { position: [-0.49513406, -0.06958647, 0.0], tex_coords: [1.0 - 0.0048659444, 1.0 - 0.43041354], }, // B
+    Vertex { position: [-0.21918549, 0.44939706, 0.0], tex_coords: [1.0 - 0.28081453, 1.0 - 0.949397057], }, // C
+    Vertex { position: [0.35966998, 0.3473291, 0.0], tex_coords: [1.0 - 0.85967, 1.0 - 0.84732911], }, // D
+    Vertex { position: [0.44147372, -0.2347359, 0.0], tex_coords: [1.0 - 0.9414737, 1.0 - 0.2652641], }, // E
 ];
 
 const INDICES: &[u16] = &[
@@ -515,6 +549,94 @@ const INDICES: &[u16] = &[
     1, 2, 4,
     2, 3, 4,
 ];
+
+struct CameraController {
+    speed: f32,
+    is_up_pressed: bool,
+    is_down_pressed: bool,
+    is_forward_pressed: bool,
+    is_backward_pressed: bool,
+    is_left_pressed: bool,
+    is_right_pressed: bool,
+}
+
+impl CameraController {
+    fn new(speed: f32) -> Self {
+        Self {
+            speed,
+            is_up_pressed: false,
+            is_down_pressed: false,
+            is_forward_pressed: false,
+            is_backward_pressed: false,
+            is_left_pressed: false,
+            is_right_pressed: false,
+        }
+    }
+
+    fn process_events(&mut self, event: &WindowEvent) -> bool {
+        match event {
+            WindowEvent::KeyboardInput {
+                input: KeyboardInput {
+                    state,
+                    virtual_keycode: Some(keycode),
+                    ..
+                },
+                ..
+            } => {
+                let is_pressed = *state == ElementState::Pressed;
+                match keycode {
+                    VirtualKeyCode::Space => {
+                        self.is_up_pressed = is_pressed;
+                        true
+                    }
+                    VirtualKeyCode::LShift => {
+                        self.is_down_pressed = is_pressed;
+                        true
+                    }
+                    VirtualKeyCode::W | VirtualKeyCode::Up => {
+                        self.is_forward_pressed = is_pressed;
+                        true
+                    }
+                    VirtualKeyCode::A | VirtualKeyCode::Left => {
+                        self.is_left_pressed = is_pressed;
+                        true
+                    }
+                    VirtualKeyCode::S | VirtualKeyCode::Down => {
+                        self.is_backward_pressed = is_pressed;
+                        true
+                    }
+                    VirtualKeyCode::D | VirtualKeyCode::Right => {
+                        self.is_right_pressed = is_pressed;
+                        true
+                    }
+                    _ => false,
+                }
+            }
+            _ => false,
+        }
+    }
+
+    fn update_camera(&self, camera: &mut Camera) {
+        use cgmath::InnerSpace;
+        let forward = (camera.target - camera.eye).normalize();
+
+        if self.is_forward_pressed {
+            camera.eye += forward * self.speed;
+        }
+        if self.is_backward_pressed {
+            camera.eye -= forward * self.speed;
+        }
+
+        let right = forward.cross(camera.up);
+
+        if self.is_right_pressed {
+            camera.eye += right * self.speed;
+        }
+        if self.is_left_pressed {
+            camera.eye -= right * self.speed;
+        }
+    }
+}
 
 #[cfg_attr(rustfmt, rustfmt_skip)]
 pub const OPENGL_TO_WGPU_MATRIX: cgmath::Matrix4<f32> = cgmath::Matrix4::new(

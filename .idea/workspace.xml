@@ -13,13 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b3b071e-7b85-4333-9713-2e700c8608ca" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/LDAPScanner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LDAPScanner.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shaders/shader.frag" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/shader.frag" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/shaders/shader.vert" beforeDir="false" afterPath="$PROJECT_DIR$/src/shaders/shader.vert" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +28,20 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -39,6 +51,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="X:\Workspace\Rust\zengine\.idea" />
+      </set>
+    </option>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="WCgVqEyo" />
@@ -55,11 +74,12 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="sqlserver" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bb-utils-rs" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -210,9 +230,10 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="1571" y="368" key="#Log_Highlighting_(ideolog)/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1578618626858" />
-    <state x="676" y="366" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579512318744">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state x="676" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579910192814">
+      <screen x="0" y="0" width="3440" height="1410" />
     </state>
+    <state x="676" y="358" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579910192814" />
     <state x="676" y="366" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512318744" />
     <state x="861" y="528" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1579507968919">
       <screen x="0" y="0" width="3440" height="1440" />
@@ -222,34 +243,40 @@
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state x="964" y="454" key="EnvironmentVariablesDialog/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579507523315" />
-    <state x="1010" y="434" key="FileChooserDialogImpl" timestamp="1579512732476">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state x="1010" y="425" key="FileChooserDialogImpl" timestamp="1579910291860">
+      <screen x="0" y="0" width="3440" height="1410" />
     </state>
+    <state x="1010" y="425" key="FileChooserDialogImpl/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579910291860" />
     <state x="1010" y="434" key="FileChooserDialogImpl/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579512732476" />
-    <state width="1072" height="474" key="GridCell.Tab.0.bottom" timestamp="1579594197426">
+    <state width="1664" height="279" key="GridCell.Tab.0.bottom" timestamp="1580774952389">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919686" />
-    <state width="1072" height="474" key="GridCell.Tab.0.bottom/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579594197426" />
-    <state width="1072" height="474" key="GridCell.Tab.0.center" timestamp="1579594197426">
+    <state width="985" height="166" key="GridCell.Tab.0.bottom/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579909403511" />
+    <state width="1664" height="279" key="GridCell.Tab.0.bottom/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1580774952389" />
+    <state width="1664" height="279" key="GridCell.Tab.0.center" timestamp="1580774952389">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1072" height="474" key="GridCell.Tab.0.center/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579594197426" />
-    <state width="1072" height="474" key="GridCell.Tab.0.left" timestamp="1579594197426">
+    <state width="985" height="166" key="GridCell.Tab.0.center/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579909403511" />
+    <state width="1664" height="279" key="GridCell.Tab.0.center/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1580774952389" />
+    <state width="1664" height="279" key="GridCell.Tab.0.left" timestamp="1580774952389">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1072" height="474" key="GridCell.Tab.0.left/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579594197426" />
-    <state width="1072" height="474" key="GridCell.Tab.0.right" timestamp="1579594197426">
+    <state width="985" height="166" key="GridCell.Tab.0.left/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579909403511" />
+    <state width="1664" height="279" key="GridCell.Tab.0.left/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1580774952389" />
+    <state width="1664" height="279" key="GridCell.Tab.0.right" timestamp="1580774952389">
       <screen x="0" y="0" width="3440" height="1440" />
     </state>
     <state width="1877" height="298" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1576271919685" />
-    <state width="1072" height="474" key="GridCell.Tab.0.right/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579594197426" />
-    <state x="468" y="334" width="1524" height="717" key="SettingsEditor" timestamp="1579514485020">
-      <screen x="0" y="0" width="3440" height="1440" />
+    <state width="985" height="166" key="GridCell.Tab.0.right/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579909403511" />
+    <state width="1664" height="279" key="GridCell.Tab.0.right/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1580774952389" />
+    <state x="1267" y="281" width="1524" height="708" key="SettingsEditor" timestamp="1579909843808">
+      <screen x="0" y="0" width="3440" height="1410" />
     </state>
     <state x="404" y="265" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1576268865993" />
+    <state x="1267" y="281" width="1524" height="708" key="SettingsEditor/0.0.3440.1410/-1080.-543.1080.1890@0.0.3440.1410" timestamp="1579909843808" />
     <state x="468" y="334" width="1524" height="717" key="SettingsEditor/0.0.3440.1440/-1080.-543.1080.1920@0.0.3440.1440" timestamp="1579514485020" />
   </component>
   <component name="XDebuggerManager">
@@ -262,7 +289,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/main.rs</url>
-          <line>121</line>
+          <line>125</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
